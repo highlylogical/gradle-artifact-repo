@@ -2,12 +2,11 @@ plugins {
     `kotlin-dsl`
     `java-gradle-plugin`
     `maven-publish`
-    //id("com.gradle.plugin-publish") version "1.2.0"
-    //kotlin("jvm") version "2.0.21"
+    id("com.gradle.plugin-publish") version "1.2.1"
 }
 
 group = "com.highlylogical.oss"
-version = "1.0-SNAPSHOT"
+version = "0.1.0"
 
 repositories {
     mavenCentral()
@@ -26,20 +25,19 @@ dependencies {
 }
 
 gradlePlugin {
+    website = "https://github.com/highlylogical/gradle-artifact-repo"
+    vcsUrl = "https://github.com/highlylogical/gradle-artifact-repo"
     plugins {
         create("artifactRepoPlugin") {
             id = "com.highlylogical.artifactrepo"
+            displayName = "Artifact Repository Plugin"
             implementationClass = "com.highlylogical.oss.ArtifactRepoPlugin"
+            description = "Plugin for configuring artifact repositories from configuration file"
+            tags = listOf("artifact", "repository", "config")
         }
+
     }
 }
-
-//pluginBundle {
-//    website = "https://github.com/your-repo/gradle-artifactory-plugin"
-//    vcsUrl = "https://github.com/your-repo/gradle-artifactory-plugin"
-//    tags = listOf("artifactory", "publishing", "repositories")
-//}
-
 
 tasks.test {
     useJUnitPlatform()

@@ -35,7 +35,9 @@ class ArtifactRepoPlugin : Plugin<Project> {
 
         // Configure repository for downloading artifacts
         project.repositories.maven {
-            name = "pull-$host-$pullRepo".replace('/', '-')
+
+            name = "pull-$host-$pullRepo".replace(Regex("[^\\w\\d]"), "-")
+
             url = URI("https://$host/$pullRepo")
             credentials {
                 username = user
@@ -49,7 +51,7 @@ class ArtifactRepoPlugin : Plugin<Project> {
         project.plugins.withId("maven-publish") {
             project.extensions.configure<PublishingExtension>("publishing") {
                 repositories.maven {
-                    name = "publish-$host-$publishRepo".replace('/', '-')
+                    name = "publish-$host-$publishRepo".replace(Regex("[^\\w\\d]"), "-")
                     url = URI("https://$host/$publishRepo")
                     credentials {
                         username = user
