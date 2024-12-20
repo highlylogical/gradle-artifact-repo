@@ -9,12 +9,13 @@ import java.util.Properties
 
 class ArtifactRepoPlugin : Plugin<Project> {
     override fun apply(project: Project) {
-        val artifactRepoFile =
-            File(System.getProperty("user.home")).listFiles()
-                .find { it.extension == "artifactrepo"  }
+        // find artifact repo file in user home directory or a directory specified by the user
+        val artifactRepoFile = File(System.getenv("ARTIFACTREPO_CONFIG_DIR") ?: System.getProperty("user.home"))
+            .listFiles()
+            ?.find { it.extension == "artifactrepo" }
 
-        if (artifactRepoFile != null && !artifactRepoFile.exists()) {
-            project.logger.warn("Artifactory properties file not found in user home directory: ${artifactRepoFile.absolutePath}")
+        if (artifactRepoFile == null || !artifactRepoFile.exists()) {
+            project.logger.warn("Artifactory properties file not found in directory: ${artifactRepoFile?.absolutePath}")
             return
         }
 
