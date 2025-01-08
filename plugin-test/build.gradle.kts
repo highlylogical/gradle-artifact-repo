@@ -1,5 +1,4 @@
 plugins {
-    id("com.highlylogical.artifactrepo")
     id("maven-publish")
 }
 
@@ -18,6 +17,5 @@ tasks.register("listRepos") {
                 else -> println("Other repo: ${repo.name}, type: ${repo.javaClass.name}")
             }
         }
-
     }
 }

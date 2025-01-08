@@ -6,10 +6,10 @@ This plugin configures artifact repositories for gradle projects using a configu
 
 To use the `gradle-artifact-repo` plugin, follow these steps:
 
-1. Add the plugin to your `build.gradle.kts` file:
+1. Add the plugin to your `settings.gradle.kts` file:
     ```kotlin
     plugins {
-        id("com.highlylogical.artifactrepo") version "0.1.0"
+        id("com.highlylogical.artifactrepo") version "0.2.0"
     }
     ```
 

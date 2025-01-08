@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "com.highlylogical.oss"
-version = "0.1.0"
+version = "0.2.0"
 
 repositories {
     mavenCentral()
@@ -20,8 +20,6 @@ dependencies {
 
     testImplementation(kotlin("test"))
     implementation(gradleApi())
-//    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin")
-
 }
 
 gradlePlugin {
